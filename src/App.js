@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import NavigationBar from "./components/Navbar";
+import HeaderPage from "./pages/HeaderPage";
+import { fetchLatestArticles } from "./Api";
+import "./custom.css";
 
-function App() {
+const App = () => {
+  const [latestNews, setLatestNews] = useState([]);
+  useEffect(() => {
+    const getLatestArticles = async () => {
+      try {
+        const latestArticles = await fetchLatestArticles();
+        setLatestNews(latestArticles);
+      } catch (error) {
+        console.error("Error in fetching latest articles:", error);
+      }
+    };
+
+    getLatestArticles();
+  }, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* Header Page Start */}
+      <div style={{ height: "100vh" }}>
+
+        <div className="h-100 d-flex flex-column">
+          <NavigationBar />
+          <HeaderPage articles={latestNews} />
+        </div>
+
+      </div>
+      {/* Header Page End */}
+
     </div>
-  );
+  )
 }
 
 export default App;
