@@ -2,14 +2,14 @@ import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import NewsCard from "./NewsCard";
 
-const NewsList = ({ articles }) => {
+const NewsList = ({ articles, customStyle }) => {
     return (
         <Container fluid>
 
             <Row>
                 {articles.map((article, index) => (
                     <Col key={index} className="d-flex justify-content-center">
-                        <NewsCard article={article} />
+                        <NewsCard article={article} customStyle={customStyle} />
                     </Col>
                 )
                 )}

@@ -1,7 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 
-
 const titleStyle = {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -9,18 +8,19 @@ const titleStyle = {
     marginBottom: '10px',
 };
 
-const descriptionStyle = {
+const getDescriptionStyle = (lineClamp) => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     display: '-webkit-box',
-    WebkitLineClamp: 6,
+    WebkitLineClamp: lineClamp,
     WebkitBoxOrient: 'vertical',
     wordWrap: 'break-word',
-};
+});
 
-const NewsCard = ({ article }) => {
+const NewsCard = ({ article, customStyle, lineClamp = 6 }) => {
+    const descriptionStyle = getDescriptionStyle(lineClamp);
     return (
-        <Card className="border-radius-5 custom-card text-white ">
+        <Card className={`border-radius-5 ${customStyle}`}>
             <div className="d-flex justify-content-center align-items-center">
                 <img className="border-radius-5 img-width-8 mt-4" src={article.urlToImage} />
             </div>

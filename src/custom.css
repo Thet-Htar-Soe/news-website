@@ -15,6 +15,7 @@
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: all 0.5s;
+    color: white !important;
 }
 
 .custom-card:hover {
@@ -24,4 +25,37 @@
 
 .custom-border-top {
     border-top: 1px solid #B1CAAC;
+}
+
+.custom-tech-card {
+    flex: 1;
+    width: 70%;
+    border: 1px solid #fff !important;   
+    max-height: 45% !important;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    background: none !important;
+    color: white !important;
+}
+
+.custom-tech-card .img-width-8 {
+    height: 130px;
+}
+
+.custom-border-left {
+    border-left: 1px solid  #B1CAAC;
+}
+
+.custom-tech-card-left {
+    flex: 1;
+    width: 90%;
+    border: 1px solid #fff !important;   
+    cursor: pointer;
+    margin-bottom: 1rem;
+    background: none !important;
+    color: white !important;
+}
+
+.custom-tech-card-left .img-width-8 {
+    max-width: 90%;
 }
