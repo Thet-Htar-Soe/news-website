@@ -3,18 +3,28 @@ import NavigationBar from "./components/Navbar";
 import HeaderPage from "./pages/HeaderPage";
 import TechnologyPage from "./pages/TechnologyPage";
 import TravelPage from "./pages/TravelPage";
-import { fetchLatestArticles } from "./Api";
+import { fetchLatestArticles, fetchTechnologyArticles, fetchTravelArticles, fetchSportArticles } from "./Api";
 import "./custom.css";
+import SportPage from "./pages/SportPage";
 
 const App = () => {
   const [latestNews, setLatestNews] = useState([]);
+  const [technologyNews, setTechnologyNews] = useState([]);
+  const [travelNews, setTravelNews] = useState([]);
+  const [sportNews, setSportNews] = useState([]);
   useEffect(() => {
     const getLatestArticles = async () => {
       try {
         const latestArticles = await fetchLatestArticles();
+        const technologyArticles = await fetchTechnologyArticles();
+        const travelArticles = await fetchTravelArticles();
+        const sportArticles = await fetchSportArticles();
         setLatestNews(latestArticles);
+        setTechnologyNews(technologyArticles);
+        setTravelNews(travelArticles);
+        setSportNews(sportArticles);
       } catch (error) {
-        console.error("Error in fetching latest articles:", error);
+        console.error("Error in fetching articles:", error);
       }
     };
 
@@ -41,7 +51,7 @@ const App = () => {
 
         <div className="custom-border-top">
 
-          <TechnologyPage technews={latestNews} />
+          <TechnologyPage technews={technologyNews} />
         </div>
       </div>
       {/* Technology Page End */}
@@ -51,10 +61,20 @@ const App = () => {
 
         <div className="custom-border-top">
 
-          <TravelPage travelnews={latestNews} />
+          <TravelPage travelnews={travelNews} />
         </div>
       </div>
       {/* Travel Page End */}
+
+      {/* Sport Page Start */}
+      <div style={{ backgroundColor: "#364a4d" }}>
+
+        <div className="custom-border-top">
+
+          <SportPage sportnews={sportNews} />
+        </div>
+      </div>
+      {/* Sport Page End */}
 
     </div>
   )

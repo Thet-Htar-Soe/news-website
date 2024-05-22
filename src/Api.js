@@ -3,14 +3,14 @@ import axios from "axios";
 const API_KEY = process.env.REACT_APP_NEW_API_KEY;
 const BASE_URL = 'https://newsapi.org/v2';
 
-// Fetch Latest 3 articles for Header Page
-export const fetchLatestArticles = async () => {
+// Reusable function for fetching articles
+const fetchArticles = async (numberOfArticles,endpoint) => {
     const validArticles = [];
     let page = 1;
 
-    while (validArticles.length < 3) {
+    while (validArticles.length < numberOfArticles) {
         try {
-            const response = await axios.get(`${BASE_URL}/top-headlines`, {
+            const response = await axios.get(`${BASE_URL}/${endpoint}`, {
                 params: {
                     sortBy: 'publishedAt',
                     country: 'us',
@@ -38,5 +38,14 @@ export const fetchLatestArticles = async () => {
         }
     }
 
-    return validArticles.slice(0, 3);
+    return validArticles.slice(0, numberOfArticles);
 }
+
+// export const fetchLatestArticles = fetchArticles(3,"top-headlines");
+export const fetchLatestArticles = () => fetchArticles(3, 'top-headlines');
+
+export const fetchTechnologyArticles = () => fetchArticles(3, 'top-headlines')
+
+export const fetchTravelArticles = () => fetchArticles(2, 'top-headlines');
+
+export const fetchSportArticles = () => fetchArticles(2, 'top-headlines');
