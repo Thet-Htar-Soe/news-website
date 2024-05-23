@@ -8,7 +8,7 @@ const NewsList = ({ articles, customStyle }) => {
 
             <Row>
                 {articles.map((article, index) => (
-                    <Col key={index} className="d-flex justify-content-center">
+                    <Col key={index} className="d-flex justify-content-center mb-3">
                         <NewsCard article={article} customStyle={customStyle} />
                     </Col>
                 )

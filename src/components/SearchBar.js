@@ -7,6 +7,10 @@ const SearchBar = ({ onFilter }) => {
 
     const handleFilter = (e) => {
         e.preventDefault();
+        if (!query.trim()) {
+            alert("Please enter a search query");
+            return;
+        }
         onFilter(query);
     };
 
@@ -19,7 +23,7 @@ const SearchBar = ({ onFilter }) => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
             />
-            <Button type="submit" className="bg-white text-black rounded-0 btn-sm border-none">Search</Button>
+            <Button type="submit" className="text-white rounded-0 btn-sm custom-search-btn">Search</Button>
         </Form>
     )
 }

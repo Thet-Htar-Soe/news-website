@@ -4,14 +4,15 @@ const API_KEY = process.env.REACT_APP_NEW_API_KEY;
 const BASE_URL = 'https://newsapi.org/v2';
 
 // Reusable function for fetching articles
-const fetchArticles = async (numberOfArticles,endpoint) => {
+const fetchArticles = async (numberOfArticles,source) => {
     const validArticles = [];
     let page = 1;
 
     while (validArticles.length < numberOfArticles) {
         try {
-            const response = await axios.get(`${BASE_URL}/${endpoint}`, {
+            const response = await axios.get(`${BASE_URL}/top-headlines`, {
                 params: {
+                    category: source,
                     sortBy: 'publishedAt',
                     country: 'us',
                     pageSize: 10,
@@ -41,12 +42,26 @@ const fetchArticles = async (numberOfArticles,endpoint) => {
     return validArticles.slice(0, numberOfArticles);
 }
 
-export const fetchLatestArticles = () => fetchArticles(3, 'top-headlines');
+// Filter Articles
+export const filterArticles = async (params) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/everything`, {
+            params: { ...params, apiKey: API_KEY },
+        });
+        const filteredArticles = response.data.articles.filter(article => article.title && article.description && article.urlToImage);
+        return filteredArticles.slice(0, 3);
+    } catch (error) {
+        console.error('Error filtering articles:', error);
+        throw error;
+    }
+};
 
-export const fetchTechnologyArticles = () => fetchArticles(3, 'top-headlines')
+export const fetchLatestArticles = () => fetchArticles(3, 'general');
 
-export const fetchTravelArticles = () => fetchArticles(2, 'top-headlines');
+export const fetchTechnologyArticles = () => fetchArticles(3, 'technology')
 
-export const fetchSportArticles = () => fetchArticles(2, 'top-headlines');
+export const fetchTravelArticles = () => fetchArticles(2, 'science');
 
-export const fetchEntArticles = () => fetchArticles(6, 'top-headlines');
+export const fetchSportArticles = () => fetchArticles(2, 'sports');
+
+export const fetchEntArticles = () => fetchArticles(6, 'entertainment');
