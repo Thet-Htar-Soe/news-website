@@ -60,7 +60,7 @@ export const fetchLatestArticles = () => fetchArticles(3, 'general');
 
 export const fetchTechnologyArticles = () => fetchArticles(3, 'technology')
 
-export const fetchTravelArticles = () => fetchArticles(2, 'science');
+export const fetchScienceArticles = () => fetchArticles(2, 'science');
 
 export const fetchSportArticles = () => fetchArticles(2, 'sports');
 

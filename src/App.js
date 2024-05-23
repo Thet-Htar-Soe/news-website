@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import NavigationBar from "./components/Navbar";
 import HeaderPage from "./pages/HeaderPage";
 import TechnologyPage from "./pages/TechnologyPage";
-import TravelPage from "./pages/TravelPage";
-import { fetchLatestArticles, fetchTechnologyArticles, fetchTravelArticles, fetchSportArticles, fetchEntArticles, filterArticles } from "./Api";
+import SciencePage from "./pages/SciencePage";
+import { fetchLatestArticles, fetchTechnologyArticles, fetchScienceArticles, fetchSportArticles, fetchEntArticles, filterArticles } from "./Api";
 import "./custom.css";
 import "./custom.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +17,7 @@ const App = () => {
   const [loading,setLoading] = useState(false);
   const [latestNews, setLatestNews] = useState([]);
   const [technologyNews, setTechnologyNews] = useState([]);
-  const [travelNews, setTravelNews] = useState([]);
+  const [scienceNews, setScienceNews] = useState([]);
   const [sportNews, setSportNews] = useState([]);
   const [entNews, setEntNews] = useState([]);
   const [query,setQuery] = useState();
@@ -26,12 +26,12 @@ const App = () => {
       try {
         const latestArticles = await fetchLatestArticles();
         const technologyArticles = await fetchTechnologyArticles();
-        const travelArticles = await fetchTravelArticles();
+        const scienceArticles = await fetchScienceArticles();
         const sportArticles = await fetchSportArticles();
         const entArticles = await fetchEntArticles();
         setLatestNews(latestArticles);
         setTechnologyNews(technologyArticles);
-        setTravelNews(travelArticles);
+        setScienceNews(scienceArticles);
         setSportNews(sportArticles);
         setEntNews(entArticles);
       } catch (error) {
@@ -96,7 +96,7 @@ const App = () => {
             {/* Science Page Start */}
             <div id="science" className="bg-fixed">
               <div className="custom-border-top">
-                <TravelPage travelnews={travelNews} />
+                <SciencePage scienceNews={scienceNews} />
               </div>
             </div>
             {/* Science Page End */}
