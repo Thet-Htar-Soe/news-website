@@ -119,3 +119,45 @@
 }
 
 /* End Sport Page Custom Design */
+
+/* Start Ent Page Custom Design */
+.custom-ent-card {
+    background-color: #859b6d !important;
+    cursor: pointer;
+    margin-bottom: 40px;
+    color: white !important;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.custom-ent-card .img-width-8 {
+    height: 150px;
+}
+
+/* End Ent Page Custom Design */
+
+/* Start Footer Page Custom Design */
+.socialicons a {
+    color: #fff;
+
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #f4f4f4;
+}
+
+.socialicons a:hover {
+    background-color: blue;
+}
+
+.footerlinks {
+    color: #eee;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.footerlinks:hover {
+    color: orange;
+    border-bottom: 1px solid orange;
+    letter-spacing: 1px;
+}
+
+/* End Footer Page Custom Design */

@@ -41,7 +41,6 @@ const fetchArticles = async (numberOfArticles,endpoint) => {
     return validArticles.slice(0, numberOfArticles);
 }
 
-// export const fetchLatestArticles = fetchArticles(3,"top-headlines");
 export const fetchLatestArticles = () => fetchArticles(3, 'top-headlines');
 
 export const fetchTechnologyArticles = () => fetchArticles(3, 'top-headlines')
@@ -49,3 +48,5 @@ export const fetchTechnologyArticles = () => fetchArticles(3, 'top-headlines')
 export const fetchTravelArticles = () => fetchArticles(2, 'top-headlines');
 
 export const fetchSportArticles = () => fetchArticles(2, 'top-headlines');
+
+export const fetchEntArticles = () => fetchArticles(6, 'top-headlines');
