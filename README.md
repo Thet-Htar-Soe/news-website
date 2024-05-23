@@ -75,4 +75,5 @@
 <li>bootstrap</li>
 <li>jquery</li>
 <li>react-spinners</li>
+<li>react-typed</li>
 </ul>
